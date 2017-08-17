@@ -17,7 +17,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('*', function($view)
         {
-            $view->with('pages', Page::where('tipopaginaid', 1)
+            $view->with('pages', Page::where('tipopaginaid', 2)
                 ->orderBy('title', 'desc')
                 ->take(10)
                 ->get());
