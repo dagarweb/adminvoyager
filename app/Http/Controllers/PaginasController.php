@@ -12,5 +12,4 @@ class PaginasController extends Controller
         $page = Page::whereSlug($slug)->firstOrFail();
         return view('paginas.show', compact('page'));
     }
-
 }

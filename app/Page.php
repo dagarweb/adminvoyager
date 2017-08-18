@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Translatable;
-use App\Tipospagina;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
+    use SoftDeletes;
     use Translatable;
 
     protected $translatable = ['title', 'slug', 'body', 'excerpt', 'meta_description', 'meta_keywords'];
@@ -52,7 +53,7 @@ class Page extends Model
     }
 
     public function tipopaginaId() {
-        return $this->belongsTo(Tipospagina::class);
+        return $this->belongsTo(\App\Tipospagina::class);
     }
 
     public function authorId()
@@ -62,7 +63,12 @@ class Page extends Model
 
     public function tiposp()
     {
-        return $this->belongsTo(Tipospagina::class, 'tipopaginaid');
+        return $this->belongsTo(\App\Tipospagina::class, 'tipopaginaid');
+    }
+
+    public function tipospaginas22()
+    {
+        return $this->belongsTo(\App\Tipospagina::class);
     }
 }
 
